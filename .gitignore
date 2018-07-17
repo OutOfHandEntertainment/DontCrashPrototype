@@ -34,8 +34,8 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
-SeniorProject/Library/
-SeniorProject/Temp/
+DontCrash/Library/
+DontCrash/Temp/
 
 # Mac ChangeLog Files
 *.DS_Store
