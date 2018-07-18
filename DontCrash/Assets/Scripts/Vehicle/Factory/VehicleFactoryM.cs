@@ -2,17 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VehicleFactoryL : VehicleFactory_I {
+public class VehicleFactoryM : VehicleFactory_I {
 
 	private GameObject frame, cab, cargo, wheel, attachment;
 	private static System.Random rand;
 
-	public VehicleFactoryL() {
+	public VehicleFactoryM() {
 		rand = new System.Random();
 	}
 
 	public override void AssembleVehicle() {
-		Instantiate(VehicleBase);
+		Instantiate(VehicleBase, new Vector3(0, 0, 0), Quaternion.identity);
+
+		frame = selectFrame();
+		cab = selectCab();
+		cargo = selectCargo();
+		wheel = selectWheel();
+		attachment = selectAttachment();
 	}
 
 	private GameObject selectFrame() {
