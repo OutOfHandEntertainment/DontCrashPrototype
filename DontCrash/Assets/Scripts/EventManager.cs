@@ -7,8 +7,8 @@ public class EventManager : MonoBehaviour {
 
 	public VehicleFactoryManager factory;
 
-	public float TimeBetweenEvents = 5f;
-	public float TimeBetweenDifficultyAdjustment = 1f;
+	public float TimeBetweenEvents;
+	public float TimeBetweenDifficultyAdjustment;
 
 	private double difficultyRating;
 
@@ -50,7 +50,7 @@ public class EventManager : MonoBehaviour {
 
 	// Use difficulty equation to calculate event difficulty rating based on current time
 	private int calculateDifficultyRating() {
-		float timeMinutes = GameManager.GameManagerInstance.getGameTime();///60;
+		float timeMinutes = GameManager.GameManagerInstance.getGameTime()/60;
 		double calculatedDifficulty;
 
 		System.Random rand = new System.Random();
