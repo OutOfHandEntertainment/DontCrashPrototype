@@ -273,7 +273,7 @@ Prefab:
     - target: {fileID: 114979447930828714, guid: 0e8fb70281dc8424083014770fee687a,
         type: 2}
       propertyPath: TimeBetweenDifficultyAdjustment
-      value: 1
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e8fb70281dc8424083014770fee687a, type: 2}
