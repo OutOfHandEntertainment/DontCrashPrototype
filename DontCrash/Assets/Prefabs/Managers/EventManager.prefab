@@ -53,3 +53,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   factory: {fileID: 0}
   TimeBetweenEvents: 5
+  TimeBetweenDifficultyAdjustment: 30
+  expectedGameLengthModifier: 12
+  sinFrequencyModifier: 2
+  sinAmplitudeModifier: 2
+  difficultySlopeModifier: 1.6666666
+  baseDifficultyRating: 2
+  randomModifierMin: -0.25001
+  randomModifierMax: 0.25001
+  minEventDifficulty: 1
+  maxEventDifficulty: 5

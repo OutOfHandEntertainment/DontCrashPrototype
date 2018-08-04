@@ -7,19 +7,27 @@ public class EventManager : MonoBehaviour {
 
 	public VehicleFactoryManager factory;
 
+	private int difficultyRating;
+	private int queueDifficultySum; 
+	private Queue<Event> eventQueue;
+
 	public float TimeBetweenEvents;
 	public float TimeBetweenDifficultyAdjustment;
 
-	private double difficultyRating;
+	// Equation coefficients
+	public float expectedGameLengthModifier;
+	public float sinFrequencyModifier;
+	public float sinAmplitudeModifier;
+	public float difficultySlopeModifier;
+	public float baseDifficultyRating;
 
-	private const float expectedGameLengthModifier = 12f;
-	private const float sinFrequencyModifier = 2f;
-	private const float sinAmplitudeModifier = 2f;
-	private const float difficultySlopeModifier = 5f / 3f;
-	private const float baseDifficultyRating = 2f;
+	// Variation coefficients
+	public float randomModifierMin;
+	public float randomModifierMax;
 
-	private const float randomModifierMin = -.3f;
-	private const float randomModifierMax = .3f;
+	// event generation constants
+	public int minEventDifficulty;
+	public int maxEventDifficulty;
 
 	// Use this for initialization
 	void Start () {
@@ -33,7 +41,9 @@ public class EventManager : MonoBehaviour {
 
 	IEnumerator events() {
 		while (true) {
-			yield return new WaitForSecondsRealtime(TimeBetweenEvents);
+			yield return new WaitUntil(delegate { return queueDifficultySum < difficultyRating; });
+
+			addEventsToQueue(difficultyRating - queueDifficultySum);
 
 			//factory.ConstructVehicle(VehicleFactoryManager.vehicleTypes.light);
 		}
@@ -66,5 +76,45 @@ public class EventManager : MonoBehaviour {
 
 		// return rating rounded to nearest whole number
 		return Convert.ToInt32(calculatedDifficulty);
+	}
+
+	// while there is space left in the queue as per the difficulty of the events, add them to the end
+	private void addEventsToQueue(int spaceToAdd) {
+		System.Random rand = new System.Random();
+		int eventDifficulty;
+
+		while (spaceToAdd > 0) {
+			if (spaceToAdd >= 5) {
+				eventDifficulty = rand.Next(minEventDifficulty, maxEventDifficulty);
+				spaceToAdd -= eventDifficulty;
+				queueDifficultySum += eventDifficulty;
+				// add event to queue
+			}
+			else {
+				eventDifficulty = rand.Next(minEventDifficulty, spaceToAdd);
+				spaceToAdd -= eventDifficulty;
+				queueDifficultySum += eventDifficulty;
+				// add event to queue
+			}
+		} 
+	}
+
+	// generate an event based on the difficulty generated
+	private void generateEvent(int eventDifficulty) {
+		if (eventDifficulty == 1) {
+			// create light vehicle
+		}
+		else if (eventDifficulty == 2) {
+			// create obstacle in road
+		}
+		else if (eventDifficulty == 3) {
+			// create medium vehicle
+		}
+		else if (eventDifficulty == 4) {
+			// create fork in road
+		}
+		else if (eventDifficulty == 5) {
+			// create heavy vehicle
+		}
 	}
 }
