@@ -39,16 +39,16 @@ public class EventManager : MonoBehaviour {
 	void Update () {
 	}
 
+	// control when events are added to the queue
 	IEnumerator events() {
 		while (true) {
 			yield return new WaitUntil(delegate { return queueDifficultySum < difficultyRating; });
 
 			addEventsToQueue(difficultyRating - queueDifficultySum);
-
-			//factory.ConstructVehicle(VehicleFactoryManager.vehicleTypes.light);
 		}
 	}
 
+	// control game difficulty rating
 	IEnumerator difficultyManager() {
 		while (true) {
 			difficultyRating = calculateDifficultyRating();

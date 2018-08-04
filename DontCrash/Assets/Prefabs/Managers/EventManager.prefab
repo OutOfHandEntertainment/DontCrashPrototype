@@ -57,7 +57,7 @@ MonoBehaviour:
   expectedGameLengthModifier: 12
   sinFrequencyModifier: 2
   sinAmplitudeModifier: 2
-  difficultySlopeModifier: 1.6666666
+  difficultySlopeModifier: 1.25
   baseDifficultyRating: 2
   randomModifierMin: -0.25001
   randomModifierMax: 0.25001
