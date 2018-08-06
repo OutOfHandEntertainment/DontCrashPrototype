@@ -8,9 +8,6 @@ public abstract class Event : MonoBehaviour {
 
 	public int difficultyRating;
 	public float postDelay;
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+	public abstract void spawn();
 }
