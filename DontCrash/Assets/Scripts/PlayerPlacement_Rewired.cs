@@ -9,6 +9,7 @@ public class PlayerPlacement_Rewired : MonoBehaviour {
     //--------------------
     public int playerId = 0;
     public GameObject wall;
+	public GameObject RV;
 
     //--------------------
     // Private Variables
@@ -36,12 +37,15 @@ public class PlayerPlacement_Rewired : MonoBehaviour {
         {
             if (other.name != "xNode")
             {
-                Instantiate(wall, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), Quaternion.identity);
+                GameObject walltemp = Instantiate(wall, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), Quaternion.identity);
+				walltemp.transform.parent = RV.transform;
             }
             else
             {
-                Instantiate(wall, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), Quaternion.Euler(new Vector3(0, 90, 0)));
+                GameObject walltemp = Instantiate(wall, new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z), Quaternion.Euler(new Vector3(0, 90, 0)));
+				walltemp.transform.parent = RV.transform;
             }
+			other.gameObject.SetActive (false);
         }
     }
 }
