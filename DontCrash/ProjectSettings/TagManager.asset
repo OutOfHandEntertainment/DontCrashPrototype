@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - floor
+  - Road Spawner
   layers:
   - Default
   - TransparentFX
