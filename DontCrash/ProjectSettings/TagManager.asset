@@ -6,6 +6,12 @@ TagManager:
   tags:
   - floor
   - Road Spawner
+  - RV
+  - Edge
+  - EnemyL
+  - EnemyR
+  - Exit
+  - Destructable
   layers:
   - Default
   - TransparentFX
